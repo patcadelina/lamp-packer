@@ -1,0 +1,23 @@
+---
+- name: Provision mysql_server
+  hosts: localhost
+  connection: local
+  become: yes
+  tasks:
+  - name: Install MySQL
+    apt:
+      name: mysql-server
+      state: present
+  - name: Start MySQL
+    service:
+      name: mysql
+      state: started
+      enabled: yes
+  - name: Configure firewall
+    ufw:
+      rule: allow
+      from: 3306
+      src: '{{ item }}'
+    with_items:
+      - 192.168.1.0/24
+      - 192.168.3.0/24
