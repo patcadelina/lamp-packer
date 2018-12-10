@@ -12,3 +12,6 @@ aws_secret_access_key=${SECRET_ACCESS_KEY}
 
 # Building AMIs
 - To build the AMI, run `packer build <role>.json` from `packer` directory.
+- Build all the roles: `nat_server`, `web_server` and `mysql_server`
+- Keep the AMI id as these will be specified in terraform when launching the environment resources
+
